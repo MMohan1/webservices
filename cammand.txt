@@ -1,0 +1,25 @@
+>>> x = {'id':2,'name':'mohan','gender':'Male','age':25,'address':'Kota','phone':8147739713}
+>>> r = requests.post('http://localhost:8080/patient',data = x)
+>>> r.text
+u'{"2": "mohan Male 25 Kota 8147739713"}'
+>>> x = {'id':1,'name':'rammohan','gender':'Male','age':25,'address':'Kota','phone':8147739713}
+>>> r = requests.post('http://localhost:8080/patient',data = x)
+>>> r.text
+u'{"1": "rammohan Male 25 Kota 8147739713", "2": "mohan Male 25 Kota 8147739713"}'
+>>> r = requests.get('http://localhost:8080/patient_show/3')
+>>> r.text
+u'This is not a correct patient id'
+>>> r = requests.get('http://localhost:8080/patient_show/2')
+>>> r.text
+u'mohan Male 25 Kota 8147739713'
+>>> x = {'id':1,'name':'mohan','gender':'Male','age':25,'address':'Kota','phone':8147739713}
+>>> r = requests.put('http://localhost:8080/patient_update',data = x)
+>>> r.text
+u'{"1": "mohan Male 25 Kota 8147739713", "2": "mohan Male 25 Kota 8147739713"}'
+>>> r = requests.delete('http://localhost:8080/patient_delete/2')
+>>> r.text
+u'{"1": "mohan Male 25 Kota 8147739713"}'
+>>> r = requests.delete('http://localhost:8080/patient_delete/2')
+>>> r.text
+u'This is not a correct patient id'
+
